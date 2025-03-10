@@ -1,11 +1,12 @@
-version: '2.4'
 services:
   couch:
     image: couchdb:3.3.3
     volumes:
       - couchdb:/opt/couchdb/data
-      - ./local.ini:/opt/couchdb/etc/local.ini
+      - ./couch_locald:/opt/couchdb/etc/local.d
+      - ./couch_certs:/opt/couchdb/cert
     ports:
       - 5984:5984
+      - 6984:6984
 volumes:
   couchdb:
